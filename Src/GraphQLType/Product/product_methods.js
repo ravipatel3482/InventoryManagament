@@ -4,7 +4,7 @@ const { DepartmentType } = require("../department");
 const { DistributorEnum } = require("../../App_Const/distributor_enum_type");
 // IMPORT PRODUCTS GLOBALLY HERE
 const { products:stubProduct } = require("../../Stub_Data/product_data"); 
-const  Products = require('../../DataModels/Prodcut/product');
+const  Product = require('../../DataModels/Prodcut/product');
 const  InventoryTransaction = require('../../DataModels/Prodcut/InventoryTransaction')
 const graphql = require("graphql");
 const {
@@ -20,7 +20,7 @@ const ProductQueries = {
   allProducts: {
     type: new GraphQLList(ProductType),
     async resolve() {
-      return await Products.find({});
+      return await Product.find({});
     }
   },
   allDiscontinuedProducts: {
@@ -87,7 +87,7 @@ const ProductQueries = {
     args: { name: { type: GraphQLString } },
     async resolve(parent, args) {
       // return products.filter(p => p.name.toLowerCase().includes(args.name.toLowerCase()));
-      return await Products.find({ 
+      return await Product.find({ 
       name: { $regex: args.name, $options: 'i' } 
      });
     }

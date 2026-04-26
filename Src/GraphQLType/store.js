@@ -2,8 +2,7 @@ const { GraphQLObjectType, GraphQLSchema } = require('graphql');
 const { BourbonQueries, BourbonMutations } = require('./bourbon');
 const { ProductQueries, ProductMutations } = require('./Product/product_methods');
 
-console.log(ProductQueries)
-console.log(ProductMutations)
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {

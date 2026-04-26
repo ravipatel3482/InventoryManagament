@@ -3,10 +3,9 @@ query GetAllInventory {
   allProducts {
     id
     name
-    type
     distributor
   }
-}
+}   
 query GetAllInventory {
   allProducts {
     id
