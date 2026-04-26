@@ -1,0 +1,15 @@
+#Get All Department
+query GetAllDepartments {
+  allDepartments {
+    id
+    name
+  }
+}
+
+# add Department 
+mutation {
+  addDepartment(name: "VAPE") {
+    id
+    name
+  }
+}

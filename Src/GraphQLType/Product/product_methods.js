@@ -1,6 +1,6 @@
 const { ProductType } = require("./product_graphql_type");
 const { DepartmentEnum } = require("../../App_Const/department_enum_type");
-const { DepartmentType } = require("../department");
+const { DepartmentType } = require("../Department/department_graphql_type");
 const { DistributorEnum } = require("../../App_Const/distributor_enum_type");
 // IMPORT PRODUCTS GLOBALLY HERE
 const { products:stubProduct } = require("../../Stub_Data/product_data"); 

@@ -3,19 +3,19 @@ const {
   GraphQLInt, GraphQLFloat, GraphQLList 
 } = require("graphql");
 
-const { DepartmentEnum } = require('../App_Const/department_enum_type')
-const { CategoryEnum } = require('../App_Const/category_enum_type');
-const { SubCategoryEnum } = require('../App_Const/subcategory_enum_type')
+const { DepartmentEnum } = require('../../App_Const/department_enum_type')
+const { CategoryEnum } = require('../../App_Const/category_enum_type');
+const { SubCategoryEnum } = require('../../App_Const/subcategory_enum_type')
 // --- 1. Department Type (The Top) ---
 const DepartmentType = new GraphQLObjectType({
   name: 'Department',
   fields: () => ({
     id: { type: GraphQLID },
-    name: { type: DepartmentEnum },
+    name: { type: GraphQLString },
     categories: {
       type: new GraphQLList(CategoryType),
       resolve(parent) {
-        const { categories } = require("../Stub_Data/category_data");
+        const { categories } = require("../../Stub_Data/category_data");
         return categories.filter(c => c.dep === parent.name);
       }
     } 
@@ -36,7 +36,7 @@ const CategoryType = new GraphQLObjectType({
      subCategories: {
       type: new GraphQLList(SubCategoryType),
       resolve(parent) {
-        const { subCategories } = require("../Stub_Data/subcategory_data");
+        const { subCategories } = require("../../Stub_Data/subcategory_data");
         return subCategories.filter(sc => sc.catId === parent.id);
       }
      }
@@ -52,7 +52,7 @@ const SubCategoryType = new GraphQLObjectType({
     category: { 
         type: CategoryType,     
         resolve(parent) {
-                const { categories } = require("../Stub_Data/category_data");
+                const { categories } = require("../../Stub_Data/category_data");
                 return categories.find(c => c.id === parent.catId);
         }
     } // Nested Relation
